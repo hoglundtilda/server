@@ -4,8 +4,10 @@ const express = require("express"),
   routes = require("./services/routes/index"),
   app = express();
 
+  const CLIENT = process.env
   const corsOptions = {
-    origin: 'https://www.test.laddboxkillarna.se',
+    //origin: 'https://www.test.laddboxkillarna.se',
+    origin: CLIENT,
     optionsSuccessStatus: 200 // For legacy browser support
 }
 

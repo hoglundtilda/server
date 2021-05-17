@@ -80,5 +80,5 @@ exports.contact = async (req, res, err) => {
 //     }
 //     console.log("Message %s sent: %s", info.messageId, info.response);
 //   });
-  res.send("email send");
+  res.json("email send");
 };
