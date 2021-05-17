@@ -53,26 +53,26 @@ exports.contact = async (req, res, err) => {
 
     //const mailList = [process.env.ALEX_MAIL, process.env.KEVIN_MAIL]
 
-  let contactMail = {
-    from: "kevin@laddboxkillarna.se",
-    to: "123456789",
-    subject: `Meddelande från ${req.body.email.email}`,
-    html: contactMailTemplate,
-  };
+//   let contactMail = {
+//     from: "kevin@laddboxkillarna.se",
+//     to: "123456789",
+//     subject: `Meddelande från ${req.body.email.email}`,
+//     html: contactMailTemplate,
+//   };
 
-  let confirmationMail = {
-    from: "User <username@domain.com>",
-    to: req.body.email.email,
-    subject: "your query on domain.com",
-    html: confirmationMailTemplate,
-  };
+//   let confirmationMail = {
+//     from: "User <username@domain.com>",
+//     to: req.body.email.email,
+//     subject: "your query on domain.com",
+//     html: confirmationMailTemplate,
+//   };
 
-  await transporter.sendMail(contactMail, (err, info) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log(info);
-  });
+//   await transporter.sendMail(contactMail, (err, info) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log(info);
+//   });
 
 //   await transporter.sendMail(confirmationMail, (err, info) => {
 //     if (err) {
