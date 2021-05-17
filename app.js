@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express"),
   cors = require("cors"),
-  routes = require("./routes/routes"),
+  routes = require("./services/routes/index"),
   app = express();
 
 app.use(cors());
@@ -11,4 +11,4 @@ app.use("/", routes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);
-console.log(`ON: ${port}`);
+console.log(`ON: ${PORT}`);
