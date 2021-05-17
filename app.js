@@ -5,7 +5,7 @@ const express = require("express"),
   app = express();
 
   const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://www.test.laddboxkillarna.se',
     optionsSuccessStatus: 200 // For legacy browser support
 }
 
