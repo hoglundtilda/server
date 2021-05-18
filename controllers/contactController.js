@@ -55,7 +55,7 @@ exports.contact = async (req, res, err) => {
 
   let contactMail = {
     from: "kevin@laddboxkillarna.se",
-    to: "123456789",
+    to: "kevin@laddboxkillarna.se",
     subject: `Meddelande från ${req.body.email.email}`,
     html: contactMailTemplate,
   };
