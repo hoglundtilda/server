@@ -10,15 +10,15 @@ const transporter = nodemailer.createTransport({
     host: "smtp.office365.com",
     port: 587,
     secure: true,
-    //requireTLS: true,
+    requireTLS: true,
     auth: {
       user: "kevin@laddboxkillarna.se",
       pass: "123456789",
     },
-    tls: {rejectUnauthorized: false},
-    // tls: {
-    //   ciphers: "SSLv3",
-    // },
+    //tls: {rejectUnauthorized: false},
+    tls: {
+      ciphers: "SSLv3",
+    },
 
   });
 
@@ -53,12 +53,12 @@ exports.contact = async (req, res, err) => {
 
     //const mailList = [process.env.ALEX_MAIL, process.env.KEVIN_MAIL]
 
-//   let contactMail = {
-//     from: "kevin@laddboxkillarna.se",
-//     to: "123456789",
-//     subject: `Meddelande från ${req.body.email.email}`,
-//     html: contactMailTemplate,
-//   };
+  let contactMail = {
+    from: "kevin@laddboxkillarna.se",
+    to: "123456789",
+    subject: `Meddelande från ${req.body.email.email}`,
+    html: contactMailTemplate,
+  };
 
 //   let confirmationMail = {
 //     from: "User <username@domain.com>",
@@ -67,12 +67,14 @@ exports.contact = async (req, res, err) => {
 //     html: confirmationMailTemplate,
 //   };
 
-//   await transporter.sendMail(contactMail, (err, info) => {
-//     if (err) {
-//       console.log(err);
-//     }
-//     console.log(info);
-//   });
+  await transporter.sendMail(contactMail, (err, info) => {
+    if (err) {
+      console.log(err);
+      res.json(err)
+    } 
+    console.log(info);
+    res.json("success");
+  });
 
 //   await transporter.sendMail(confirmationMail, (err, info) => {
 //     if (err) {
@@ -80,5 +82,5 @@ exports.contact = async (req, res, err) => {
 //     }
 //     console.log("Message %s sent: %s", info.messageId, info.response);
 //   });
-  res.json("email send");
+
 };
