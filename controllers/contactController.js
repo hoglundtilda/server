@@ -51,10 +51,10 @@ exports.contact = async (req, res, err) => {
     </body>\n\
     </html>";
 
-    const mailList = [process.env.ALEX_MAIL, process.env.KEVIN_MAIL]
+    const mailList = ['alexander@laddboxkillarna.se', 'kevin@laddboxkillarna.se']
 
   let contactMail = {
-    from: "hoglund.matilda@gmail.com",
+    from: 'hoglund.matilda@gmail.com',
     to: mailList,
     subject: `Meddelande från ${req.body.email.email}`,
     html: contactMailTemplate,
