@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
     service: 'Godaddy',
     host: "smtp.office365.com",
     port: 587,
-    secure: true,
+    secure: false,
     requireTLS: true,
     auth: {
       user: "kevin@laddboxkillarna.se",
