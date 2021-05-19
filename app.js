@@ -6,22 +6,28 @@ const express = require("express"),
   PORT = process.env.APP_PORT;
 
 
-const CLIENT = process.env;
-let corsOptions;
-if (process.env.NODE_ENV === "production") {
-  console.log("production")
-  corsOptions = {
-    origin: "https://test.laddboxkillarna.se",
-    optionsSuccessStatus: 200,
-  };
-} else {
-  console.log("develop")
 
-  corsOptions = {
-    origin: CLIENT,
-    optionsSuccessStatus: 200, // For legacy browser support
-  };
+const CLIENT = process.env
+const corsOptions = {
+  //origin: 'https://www.test.laddboxkillarna.se',
+  origin: CLIENT,
+  optionsSuccessStatus: 200 // For legacy browser support
 }
+//let corsOptions;
+// if (process.env.NODE_ENV === "production") {
+//   console.log("production")
+//   corsOptions = {
+//     origin: "https://test.laddboxkillarna.se",
+//     optionsSuccessStatus: 200,
+//   };
+// } else {
+//   console.log("develop")
+
+//   corsOptions = {
+//     origin: CLIENT,
+//     optionsSuccessStatus: 200, // For legacy browser support
+//   };
+// }
 
 //console.log(process.env);
 
