@@ -12,7 +12,7 @@ let corsOptions;
 if (process.env.NODE_ENV === "production") {
   console.log("here")
   corsOptions = {
-    origin: "https://www.test.laddboxkillarna.se",
+    origin: "https://test.laddboxkillarna.se",
     optionsSuccessStatus: 200,
   };
 } else {
