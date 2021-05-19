@@ -5,17 +5,18 @@ const express = require("express"),
   app = express(),
   PORT = process.env.APP_PORT;
 
-  console.log(process.env.APP_PORT)
 
 const CLIENT = process.env;
 let corsOptions;
 if (process.env.NODE_ENV === "production") {
-  console.log("here")
+  console.log("production")
   corsOptions = {
     origin: "https://test.laddboxkillarna.se",
     optionsSuccessStatus: 200,
   };
 } else {
+  console.log("develop")
+
   corsOptions = {
     origin: CLIENT,
     optionsSuccessStatus: 200, // For legacy browser support

@@ -4,8 +4,8 @@ const { transporter } = require("./transporter"),
   path = require("path"),
   htmlTemplate = "../../templates/html/contactConfirmation.html";
 
-exports.contactConfirmationEmail = async (email) => {
-  console.log({ confirmationEmail: email });
+exports.createContactConfirmationEmail = async (email) => {
+  console.log(email);
 
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
