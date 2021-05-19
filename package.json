@@ -7,7 +7,10 @@
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
-    "nodemailer": "^6.6.0"
+    "express-handlebars": "^5.3.2",
+    "fs": "0.0.1-security",
+    "nodemailer": "^6.6.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
