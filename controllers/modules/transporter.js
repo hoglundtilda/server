@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 exports.transporter = nodemailer.createTransport({
   service: "smtp.office365.com",
-  port: process.env.PORT,
+  port: process.env.SMTP_PORT,
   secure: false,
   requireTLS: true,
   auth: {
