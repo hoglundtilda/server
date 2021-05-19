@@ -4,11 +4,21 @@ const express = require("express"),
   routes = require("./services/routes/index"),
   app = express();
 
-  const CLIENT = process.env
-  const corsOptions = {
+const CLIENT = process.env;
+let corsOptions;
+if (process.env.NODE_ENV === "production") {
+  corsOptions = {
+    origin: "https://www.test.laddboxkillarna.se",
+    optionsSuccessStatus: 200,
+  };
+} else {
+  corsOptions = {
     origin: CLIENT,
-    optionsSuccessStatus: 200 // For legacy browser support
+    optionsSuccessStatus: 200, // For legacy browser support
+  };
 }
+
+//console.log(process.env);
 
 app.use(cors(corsOptions));
 app.use(express.json());
