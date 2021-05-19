@@ -23,9 +23,11 @@ exports.createContactConfirmationEmail = async (email) => {
 
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
-      return console.log(err);
+      return err;
+    } else {
+      return response
     }
-    console.log("Message %s sent: %s", response, response);
+    
   });
 
 };
