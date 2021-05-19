@@ -10,5 +10,4 @@ exports.contact = async (req, res, err) => {
   //await contactEmail(email);
   await contactConfirmationEmail(email);
 
-  console.log("here123");
 };
