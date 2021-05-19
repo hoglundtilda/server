@@ -5,13 +5,12 @@ const { transporter } = require("./transporter"),
   htmlTemplate = "../../templates/html/contactConfirmation.html";
 
 exports.createContactConfirmationEmail = async (email) => {
-  console.log(email);
 
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
     replacements = {
-      firstName: email.firstName,
+      firstName: 'Matilda',
     },
     confirmationEmailTemplate = template(replacements);
 
@@ -29,5 +28,4 @@ exports.createContactConfirmationEmail = async (email) => {
     console.log("Message %s sent: %s", response, response);
   });
 
-  console.log(email);
 };
