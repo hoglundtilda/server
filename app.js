@@ -9,6 +9,7 @@ const express = require("express"),
 const CLIENT = process.env;
 let corsOptions;
 if (process.env.NODE_ENV === "production") {
+  console.log("here")
   corsOptions = {
     origin: "https://www.test.laddboxkillarna.se",
     optionsSuccessStatus: 200,
