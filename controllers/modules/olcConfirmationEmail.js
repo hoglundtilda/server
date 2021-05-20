@@ -48,8 +48,10 @@ exports.createContactConfirmationEmail = async (email) => {
 
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
+      console.log(err)
       return err;
     } else {
+      console.log(response)
       return response
     }
     
