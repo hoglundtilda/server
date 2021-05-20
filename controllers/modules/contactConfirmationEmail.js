@@ -8,7 +8,7 @@ const { transporter } = require("./transporter"),
   htmlTemplate = "../../templates/html/contactConfirmation.html",
   attachmentsDir = "../../templates/";
 
-  transporter.use("compile", inlineCss());
+  //transporter.use("compile", inlineCss());
 
 exports.createContactConfirmationEmail = async (email) => {
 
@@ -53,13 +53,12 @@ exports.createContactConfirmationEmail = async (email) => {
 
  
   await transporter.sendMail(confirmationEmail, (err, response) => {
-    
     if (err) {
       console.log(err)
-      return err;
+    //  return err;
     } else {
       console.log(response)
-      return response;
+      //return response;
     }
   });
 };
