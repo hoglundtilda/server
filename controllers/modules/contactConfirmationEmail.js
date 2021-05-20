@@ -15,7 +15,7 @@ exports.createContactConfirmationEmail = async (email) => {
   const attachments = path.join(__dirname, attachmentsDir) 
   console.log(attachments)
 
-  const filePath = path.join(__dirname, attachments + "/html/contactConfirmation.html"),
+  const filePath = path.join(attachments + "/html/contactConfirmation.html"),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
     replacements = {
