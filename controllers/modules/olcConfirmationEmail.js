@@ -29,17 +29,17 @@ exports.createContactConfirmationEmail = async (email) => {
       // },
       {
         filename: "logo_full_white.svg",
-        path: `${attachments}/assets/`,
+        path: `${attachments}/assets/logo_full_white.svg`,
         cid: "logo",
       },
-      {
-        path: `${attachments}/assets/instagram.svg`,
-        cid: "instagram",
-      },
-      {
-        path: `${attachments}/assets/facebook.svg`,
-        cid: "facebook",
-      },
+      // {
+      //   path: `${attachments}/assets/instagram.svg`,
+      //   cid: "instagram",
+      // },
+      // {
+      //   path: `${attachments}/assets/facebook.svg`,
+      //   cid: "facebook",
+      // },
     ],
     html: confirmationEmailTemplate,
   };
