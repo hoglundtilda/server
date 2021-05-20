@@ -51,14 +51,14 @@ exports.createContactConfirmationEmail = async (email) => {
     html: confirmationEmailTemplate,
   };
 
- 
+  transporter.use("compile", inlineCss())
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
       console.log(err)
-    //  return err;
+      return err;
     } else {
       console.log(response)
-      //return response;
+      return response;
     }
   });
 };
