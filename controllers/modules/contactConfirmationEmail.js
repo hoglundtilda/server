@@ -2,6 +2,7 @@ const { transporter } = require("./transporter"),
   //{readHTMLFile} = require ("./createEmail"),
   handlebars = require("handlebars"),
   inlineCss = require("nodemailer-juice"),
+  juice = require("juice"),
   fs = require("fs"),
   path = require("path"),
   htmlTemplate = "../../templates/html/contactConfirmation.html",
@@ -48,8 +49,8 @@ exports.createContactConfirmationEmail = async (email) => {
     html: confirmationEmailTemplate,
   };
 
-  transporter.use("compile", inlineCss());
-  await transporter.sendMail(confirmationEmail, (err, response) => {
+  const styledHTML = juice(confirmationEmail);
+  await transporter.sendMail(styledHTML, (err, response) => {
     
     if (err) {
       console.log(err)
