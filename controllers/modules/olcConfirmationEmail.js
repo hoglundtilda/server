@@ -28,7 +28,8 @@ exports.createContactConfirmationEmail = async (email) => {
       //   cid: "style",
       // },
       {
-        path: `${attachments}/assets/logo_full_white.svg`,
+        filename: "logo_full_white.svg",
+        path: `${attachments}/assets/`,
         cid: "logo",
       },
       {
