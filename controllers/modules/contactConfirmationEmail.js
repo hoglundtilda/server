@@ -49,8 +49,8 @@ exports.createContactConfirmationEmail = async (email) => {
     html: confirmationEmailTemplate,
   };
 
-  const styledHTML = juice(confirmationEmail);
-  await transporter.sendMail(styledHTML, (err, response) => {
+ 
+  await transporter.sendMail(confirmationEmail, (err, response) => {
     
     if (err) {
       console.log(err)
