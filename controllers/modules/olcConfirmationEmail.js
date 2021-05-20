@@ -45,7 +45,7 @@ exports.createContactConfirmationEmail = async (email) => {
     ],
   };
   transporter.use("compile", inlineCss())
-
+console.log(`${attachments}/assets/logo_full_white.svg`)
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
       console.log(err)
