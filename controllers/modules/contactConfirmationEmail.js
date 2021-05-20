@@ -5,7 +5,7 @@ const { transporter } = require("./transporter"),
   juice = require("juice"),
   fs = require("fs"),
   path = require("path"),
-  htmlTemplate = "../../templates/html/contactConfirmation.html",
+  //htmlTemplate = "../../templates/html/contactConfirmation.html",
   attachmentsDir = "../../templates/";
 
   //transporter.use("compile", inlineCss());
@@ -15,7 +15,7 @@ exports.createContactConfirmationEmail = async (email) => {
   const attachments = path.join(__dirname, attachmentsDir) 
   console.log(attachments)
 
-  const filePath = path.join(__dirname, htmlTemplate),
+  const filePath = path.join(__dirname, attachments + "/html/contactConfirmation.html"),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
     replacements = {
@@ -52,7 +52,10 @@ exports.createContactConfirmationEmail = async (email) => {
     html: confirmationEmailTemplate,
   };
 
-  transporter.use("compile", inlineCss())
+  console.log(filePath)
+
+
+  //transporter.use("compile", inlineCss())
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
       console.log(err)
