@@ -31,7 +31,7 @@ exports.createContactConfirmationEmail = async (email) => {
       // },
       {
         filename: "logo_full_white.svg",
-        path: `${attachments}/assets/logo_full_white.svg`,
+        filePath: attachments + "/assets/logo_full_white.svg",
         cid: "logo123456",
       },
       // {
@@ -45,7 +45,7 @@ exports.createContactConfirmationEmail = async (email) => {
     ],
   };
   transporter.use("compile", inlineCss())
-console.log(`${attachments}/assets/logo_full_white.svg`)
+
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
       console.log(err)
