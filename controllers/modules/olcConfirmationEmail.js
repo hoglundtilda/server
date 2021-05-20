@@ -1,4 +1,5 @@
-const { transporter } = require("./transporter"),
+//const { transporter } = require("./transporter"),
+const nodemailer = require("nodemailer"),
   handlebars = require("handlebars"),
   fs = require('fs'),
   path = require("path"),
@@ -6,6 +7,22 @@ const { transporter } = require("./transporter"),
   attachmentsDir = "../../templates",
   inlineCss = require("nodemailer-juice");
 
+
+
+  const transporter = nodemailer.createTransport({
+    service: "Godaddy",
+    host: "smtp.office365.com",
+    port: process.env.SMTP_PORT,
+    secure: false,
+    requireTLS: true,
+    auth: {
+      user: process.env.KEVIN_MAIL,
+      pass: process.env.KEVIN_PW,
+    },
+    tls: {
+      ciphers: "SSLv3",
+    },
+  });
 
 exports.createContactConfirmationEmail = async (email) => {
   const attachments = path.join(__dirname, attachmentsDir) 
