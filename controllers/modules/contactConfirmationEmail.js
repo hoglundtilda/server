@@ -11,7 +11,6 @@ exports.createContactConfirmationEmail = async (email) => {
 
   const attachments = path.join(__dirname, attachmentsDir) 
 
-console.log(attachments)
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
@@ -53,8 +52,10 @@ console.log(attachments)
   await transporter.sendMail(confirmationEmail, (err, response) => {
     
     if (err) {
+      console.log(err)
       return err;
     } else {
+      console.log(response)
       return response;
     }
   });
