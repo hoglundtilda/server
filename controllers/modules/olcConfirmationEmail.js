@@ -23,6 +23,7 @@ const nodemailer = require("nodemailer"),
       ciphers: "SSLv3",
     },
   });
+  transporter.use("compile", inlineCss())
 
 exports.createContactConfirmationEmail = async (email) => {
   const attachments = path.join(__dirname, attachmentsDir) 
@@ -61,7 +62,6 @@ exports.createContactConfirmationEmail = async (email) => {
       // },
     ],
   };
-  transporter.use("compile", inlineCss())
 
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
