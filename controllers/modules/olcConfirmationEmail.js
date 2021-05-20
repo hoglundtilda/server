@@ -22,6 +22,7 @@ exports.createContactConfirmationEmail = async (email) => {
     from: process.env.KEVIN_MAIL,
     to: email.email,
     subject: email.subject,
+    html: confirmationEmailTemplate,
     attachments: [
       // {
       //   filename: "contactConfirmation.css",
@@ -31,7 +32,7 @@ exports.createContactConfirmationEmail = async (email) => {
       {
         filename: "logo_full_white.svg",
         path: `${attachments}/assets/logo_full_white.svg`,
-        cid: "logo",
+        cid: "logo123456",
       },
       // {
       //   path: `${attachments}/assets/instagram.svg`,
@@ -42,7 +43,6 @@ exports.createContactConfirmationEmail = async (email) => {
       //   cid: "facebook",
       // },
     ],
-    html: confirmationEmailTemplate,
   };
   transporter.use("compile", inlineCss())
 
