@@ -3,7 +3,8 @@ const { transporter } = require("./transporter"),
   fs = require('fs'),
   path = require("path"),
   htmlTemplate = "../../templates/html/contactConfirmation.html",
-  attachmentsDir = "../../templates/";
+  attachmentsDir = "../../templates/",
+  inlineCss = require("nodemailer-juice");
 
 
 exports.createContactConfirmationEmail = async (email) => {
@@ -43,6 +44,7 @@ exports.createContactConfirmationEmail = async (email) => {
     ],
     html: confirmationEmailTemplate,
   };
+  transporter.use("compile", inlineCss())
 
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
