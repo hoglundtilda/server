@@ -3,7 +3,7 @@ const { transporter } = require("./transporter"),
   fs = require('fs'),
   path = require("path"),
   htmlTemplate = "../../templates/html/contactConfirmation.html",
-  attachmentsDir = "../../templates/",
+  attachmentsDir = "../../templates",
   inlineCss = require("nodemailer-juice");
 
 
