@@ -13,6 +13,7 @@ const { transporter } = require("./transporter"),
 exports.createContactConfirmationEmail = async (email) => {
 
   const attachments = path.join(__dirname, attachmentsDir) 
+  console.log(attachments)
 
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
