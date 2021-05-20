@@ -8,6 +8,8 @@ const { transporter } = require("./transporter"),
   htmlTemplate = "../../templates/html/contactConfirmation.html",
   attachmentsDir = "../../templates/";
 
+  transporter.use("compile", inlineCss());
+
 exports.createContactConfirmationEmail = async (email) => {
 
   const attachments = path.join(__dirname, attachmentsDir) 

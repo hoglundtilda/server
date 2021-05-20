@@ -1,8 +1,7 @@
-const nodemailer = require("nodemailer"),
-inlineCss = require("nodemailer-juice");
+const nodemailer = require("nodemailer");
 
 
-transporter.use("compile", inlineCss());
+
 
 exports.transporter = nodemailer.createTransport({
   service: "Godaddy",
