@@ -15,23 +15,42 @@
 </html> -->
 
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact email</title>
+    <style>
+      html {
+        font-family: "Raleway", sans-serif;
+        height: 100%;
+      }
 
-<head>
-  <meta charset=utf-8>
-  <meta http-equiv=X-UA-Compatible content="IE=edge">
-  <meta name=viewport content="width=device-width,initial-scale=1">
-  <script src=https://kit.fontawesome.com/28ec47744a.js crossorigin=anonymous></script>
-  <script src=https://smtpjs.com/v3/smtp.js></script>
-  <title>Matilda Höglund</title>
-  <link href=/css/app.6b925179.css rel=preload as=style>
-  <link href=/js/app.30adca04.js rel=preload as=script>
-  <link href=/js/chunk-vendors.9aff8016.js rel=preload as=script>
-  <link href=/css/app.6b925179.css rel=stylesheet>
-</head>
+    tr  td {
+        margin: 5px;
+      }
+    </style>
+  </head>
 
-<body>
-  <div id=app></div>
-</body>
+  <body>
+    <table border="0" cellpadding="0" cellspacing="0" height="auto" width="50%">
+      <tr>
+        <td valign="top">{{firstName}} {{lastName}}</td>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <td valign="top"><a href="`mailto:${email}`">{{email}}</a></td>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <th valign="top" align="left">{{subject}}</th>
+      </tr>
+      <td height="10"></td>
 
+      <tr>
+        <td valign="top">{{message}}</td>
+      </tr>
+    </table>
+  </body>
 </html>

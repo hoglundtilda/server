@@ -1,8 +1,5 @@
 const nodemailer = require("nodemailer");
 
-
-
-
 exports.transporter = nodemailer.createTransport({
   service: "Godaddy",
   host: "smtp.office365.com",

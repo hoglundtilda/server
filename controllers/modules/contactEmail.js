@@ -12,6 +12,10 @@ exports.createContactEmail = async (email) => {
     template = handlebars.compile(source),
     replacements = {
       firstName: email.firstName,
+      lastName: email.lastName,
+      email: email.email,
+      subject: email.subject,
+      message: email.message
     },
     contactEmailTemplate = template(replacements),
     mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
@@ -25,8 +29,11 @@ exports.createContactEmail = async (email) => {
 
   await transporter.sendMail(contactEmail, (err, response) => {
     if (err) {
-      return console.log(err);
+      console.log(err)
+      return err;
+    } else {
+      console.log(response)
+      return response;
     }
-    console.log("Message %s sent: %s", response, response);
   });
 };
