@@ -6,7 +6,7 @@ const { transporter } = require("./transporter"),
   fs = require("fs"),
   path = require("path"),
   //htmlTemplate = "../../templates/html/contactConfirmation.html",
-  attachmentsDir = "../../templates/";
+  attachmentsDir = "../../templates";
 
   //transporter.use("compile", inlineCss());
 
@@ -30,7 +30,7 @@ exports.createContactConfirmationEmail = async (email) => {
     attachments: [
       {
         filename: "logo_full_white.svg",
-        path: `${attachments}/assets/`,
+        path: attachments + "/assets/logo_full_white.svg",
         cid: "logo_image123",
       },
       // {
