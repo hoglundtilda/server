@@ -27,7 +27,7 @@
         height: 100%;
       }
 
-    tr  td {
+      tr td {
         margin: 5px;
       }
     </style>
@@ -35,21 +35,25 @@
 
   <body>
     <table border="0" cellpadding="0" cellspacing="0" height="auto" width="50%">
+      <td height="40"></td>
       <tr>
-        <td valign="top">{{firstName}} {{lastName}}</td>
+        <td  valign="top" align="left">Nytt meddelande från:</td>
       </tr>
       <td height="10"></td>
       <tr>
-        <td valign="top"><a href="`mailto:${email}`">{{email}}</a></td>
+        <th  valign="top" align="left">Namn: {{firstName}} {{lastName}}</th>
       </tr>
       <td height="10"></td>
       <tr>
-        <th valign="top" align="left">{{subject}}</th>
+        <td valign="top"><a href="`mailto:${email}`">Email: {{email}}</a></td>
+      </tr>
+      <td height="30"></td>
+      <tr>
+        <th valign="top" align="left">Ämne: {{subject}}</th>
       </tr>
       <td height="10"></td>
-
       <tr>
-        <td valign="top">{{message}}</td>
+        <td valign="top">Meddelande: {{message}}</td>
       </tr>
     </table>
   </body>
