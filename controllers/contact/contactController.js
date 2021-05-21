@@ -2,7 +2,7 @@ const validate = require("../../services/middleware/validation"),
   { createContactEmail } = require("../modules/contactEmail"),
   {
     createContactConfirmationEmail,
-  } = require("../modules/olcConfirmationEmail");
+  } = require("../modules/contactConfirmationEmail");
 
 exports.validation = validate;
 
