@@ -5,21 +5,17 @@ const { transporter } = require("./transporter"),
   juice = require("juice"),
   fs = require("fs"),
   path = require("path"),
-  //htmlTemplate = "../../templates/html/contactConfirmation.html",
-  attachmentsDir = "../../templates";
+  htmlTemplate = "../../templates/html/contactConfirmation.html"
 
   //transporter.use("compile", inlineCss());
 
 exports.createContactConfirmationEmail = async (email) => {
 
-  const attachments = path.join(__dirname, attachmentsDir) 
-  console.log(attachments)
-
-  const filePath = path.join(attachments + "/html/contactConfirmation.html"),
+  const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
     replacements = {
-      firstName: "Matilda",
+      firstName: email.firstName,
     },
     confirmationEmailTemplate = template(replacements);
 
@@ -28,26 +24,15 @@ exports.createContactConfirmationEmail = async (email) => {
     to: email.email,
     subject: email.subject,
     attachments: [
-      {
-        filename: "logo_full_white.svg",
-        path: attachments + "/assets/logo_full_white.svg",
-        cid: "logo_image123",
-      },
       // {
-      //   filename: "instagram.svg",
-      //   path: `${attachments}/assets/`,
-      //   cid: "instagram",
-      // },
-      // {
-      //   filename: "facebook.svg",
-      //   path: `${attachments}/assets/`,
-      //   cid: "facebook",
+      //   filename: "logo_full_white.svg",
+      //   path: attachments + "/assets/logo_full_white.svg",
+      //   cid: "logo_image123",
       // },
     ],
     html: confirmationEmailTemplate,
   };
 
-  //transporter.use("compile", inlineCss())
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
       console.log(err)
