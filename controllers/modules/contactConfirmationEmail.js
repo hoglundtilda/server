@@ -28,32 +28,24 @@ exports.createContactConfirmationEmail = async (email) => {
     to: email.email,
     subject: email.subject,
     attachments: [
-      // {
-      //   filename: "contactConfirmation.css",
-      //   path: `${attachments}/css/`,
-      //   cid: "style",
-      // },
       {
         filename: "logo_full_white.svg",
         path: `${attachments}/assets/`,
-        cid: "logo",
+        cid: "logo_image123",
       },
-      {
-        filename: "instagram.svg",
-        path: `${attachments}/assets/`,
-        cid: "instagram",
-      },
-      {
-        filename: "facebook.svg",
-        path: `${attachments}/assets/`,
-        cid: "facebook",
-      },
+      // {
+      //   filename: "instagram.svg",
+      //   path: `${attachments}/assets/`,
+      //   cid: "instagram",
+      // },
+      // {
+      //   filename: "facebook.svg",
+      //   path: `${attachments}/assets/`,
+      //   cid: "facebook",
+      // },
     ],
     html: confirmationEmailTemplate,
   };
-
-  console.log(filePath)
-
 
   //transporter.use("compile", inlineCss())
   await transporter.sendMail(confirmationEmail, (err, response) => {
