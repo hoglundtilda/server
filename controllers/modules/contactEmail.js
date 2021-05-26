@@ -7,7 +7,6 @@ const { transporter } = require("./transporter"),
 
 
 exports.createContactEmail = async (email) => {
-  console.log(email);
 
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
