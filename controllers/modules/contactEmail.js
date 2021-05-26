@@ -16,7 +16,7 @@ exports.createContactEmail = async (email) => {
     contactEmailTemplate = template(replacements)
 
   let contactEmail = {
-    from: process.env.KEVIN_MAIL,
+    from: process.env.ALEXANDER_MAIL,
     to: mailList,
     subject: `Email från: ${email.firstName} ${email.lastName}`,
     html: contactEmailTemplate,

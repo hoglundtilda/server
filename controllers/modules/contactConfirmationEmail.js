@@ -14,7 +14,7 @@ exports.createContactConfirmationEmail = async (email) => {
     confirmationEmailTemplate = template(replacements);
 
   let confirmationEmail = {
-    from: process.env.KEVIN_MAIL,
+    from: process.env.ALEXANDER_MAIL,
     to: email.email,
     subject: email.subject,
     html: confirmationEmailTemplate,
