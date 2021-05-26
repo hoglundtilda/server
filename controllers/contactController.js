@@ -10,19 +10,17 @@ exports.contact = async (req, res, err) => {
   const email = req.body.email;
 
   try {
-   const contactEmail = await createContactEmail(email)
-    const contactConfirmationEmail = await createContactConfirmationEmail(email)
-  }
+    const contactEmail = await createContactEmail(email);
+    const contactConfirmationEmail = await createContactConfirmationEmail(
+      email
+    );
 
-  catch(err) {
-    if(err) {
-      res.send(err)
+    if (contactEmail === "success" && contactConfirmationEmail === "success")
+      res.json("success");
+  } catch (err) {
+    if (err) {
+      res.send(err);
     }
-  }
-
-  finally {
-    console.log(contactEmail)
-    if(contactEmail === 'success' && contactConfirmationEmail === 'success') res.json('success')
   }
 
   // await createContactEmail(email).then((response) => {

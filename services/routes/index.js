@@ -5,6 +5,6 @@ const { Router } = require("express"),
   orderController = require("../../controllers/orderController.js");
 
 router.route("/email/contact").post(contactController.contact);
-router.route("/email/order").post(orderController.contact);
+router.route("/email/order").post(orderController.order);
 
 module.exports = router;

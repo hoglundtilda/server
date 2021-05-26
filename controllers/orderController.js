@@ -6,16 +6,18 @@ const validate = require("../services/middleware/validation"),
 
 exports.validation = validate;
 
-exports.contact = async (req, res, err) => {
+exports.order = async (req, res, err) => {
   const order = req.body.order;
 
-  await createOrderEmail(order).then((response) => {
-    console.log(response)
-    res.json(response);
-  });
+  try {
+    const orderEmail = await createOrderEmail(order);
+    const orderConfirmationEmail = await createOrderConfirmationEmail(order);
 
-  await createOrderConfirmationEmail(order).then((response) => {
-    console.log(response)
-    res.json(response);
-  });
+    if (orderEmail === "success" && orderConfirmationEmail === "success")
+      res.json("success");
+  } catch (err) {
+    if (err) {
+      res.send(err);
+    }
+  }
 };

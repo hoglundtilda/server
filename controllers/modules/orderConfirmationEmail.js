@@ -25,7 +25,8 @@ exports.createOrderConfirmationEmail = async (order) => {
       return err;
     } else {
       console.log(response);
-      return response;
+      return 'success'
+      //return response;
     }
   });
 };
