@@ -14,8 +14,8 @@ exports.contact = async (req, res, err) => {
     res.json(response);
   });
 
-//   await createOrderConfirmationEmail(order).then((response) => {
-//     console.log(response)
-//     res.json(response);
-//   });
+  await createOrderConfirmationEmail(order).then((response) => {
+    console.log(response)
+    res.json(response);
+  });
 };

@@ -21,48 +21,57 @@
     <table border="0" cellpadding="0" cellspacing="0" height="auto" width="50%">
       <td height="40"></td>
       <tr>
-        <th  valign="top" align="left">Beställning Laddbox</th>
+        <th valign="top" align="left">Beställning Laddbox</th>
       </tr>
       <td height="10"></td>
       <tr>
-        <th  valign="top" align="left">Namn: {{firstName}} {{lastName}}</th>
+        <th valign="top" align="left">Kontaktuppgifter</th>
+      </tr>
+      <tr>
+        <td valign="top" align="left">{{firstName}} {{lastName}}</td>
+      </tr>
+      <tr>
+        <td valign="top">
+          <a href="`mailto:${email}`">{{email}}</a>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="left">{{phoneNr}}</td>
       </tr>
       <td height="10"></td>
       <tr>
-        <td valign="top"><a href="`mailto:${email}`">Email: {{email}}</a></td>
-      </tr>
-      <td height="30"></td>
-      <tr>
-        <td valign="top" align="left">Adress: {{adress}}</td>
+        <th valign="top" align="left">Installation på adress</th>
       </tr>
       <tr>
-        <td valign="top" align="left">Postnummer: {{postNr}}</td>
+        <td valign="top" align="left">{{adress}}</td>
       </tr>
       <tr>
-        <td valign="top" align="left">Ort: {{ort}}</td>
+        <td valign="top" align="left">{{postNr}}</td>
       </tr>
       <tr>
-        <td valign="top" align="left">Tlf: {{phoneNr}}</td>
+        <td valign="top" align="left">{{ort}}</td>
       </tr>
-      <td height="30"></td>
+      <td height="5"></td>
+
+      <td height="5"></td>
       <tr>
         <td valign="top" align="left">Övriga upplysningar: {{information}}</td>
       </tr>
-      <td height="10"></td>
+      <td height="5"></td>
       <tr>
-        <td valign="top">Färg: {{color}}</td>
+        <td valign="top">Laddbox färg: {{color}}</td>
       </tr>
-      <td height="10"></td>
+      <td height="5"></td>
       <tr>
         <td valign="top">Konsultation: {{consultation}}</td>
       </tr>
-      <td height="10"></td>
+      <td height="5"></td>
       <tr>
         <td valign="top">Laddkabel: {{charging_cable}}</td>
       </tr>
       <td height="10"></td>
       <tr>
-        <td valign="top">Avtalsvillkor: {{contract_terms}}</td>
+        <td valign="top">Har tagit del av och accepterar avtalsvillkor: JA</td>
       </tr>
     </table>
   </body>
