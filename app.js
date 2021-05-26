@@ -3,33 +3,13 @@ const express = require("express"),
   cors = require("cors"),
   routes = require("./services/routes/index"),
   app = express(),
-  PORT = process.env.APP_PORT;
-
-
-
-const CLIENT = process.env
-const corsOptions = {
+  PORT = process.env.APP_PORT,
+  CLIENT = process.env,
+  corsOptions = {
   //origin: 'https://www.test.laddboxkillarna.se',
   origin: CLIENT,
-  optionsSuccessStatus: 200 // For legacy browser support
+  optionsSuccessStatus: 200
 }
-//let corsOptions;
-// if (process.env.NODE_ENV === "production") {
-//   console.log("production")
-//   corsOptions = {
-//     origin: "https://test.laddboxkillarna.se",
-//     optionsSuccessStatus: 200,
-//   };
-// } else {
-//   console.log("develop")
-
-//   corsOptions = {
-//     origin: CLIENT,
-//     optionsSuccessStatus: 200, // For legacy browser support
-//   };
-// }
-
-//console.log(process.env);
 
 app.use(cors(corsOptions));
 app.use(express.json());
