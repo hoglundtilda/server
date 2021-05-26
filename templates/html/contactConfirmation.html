@@ -19,11 +19,16 @@
       }
 
       body {
-        margin: 50px;
+        margin: 30px;
       }
 
       td {
         padding: 3px;
+      }
+
+      .content {
+        max-width: 600px;
+        width: 100%;
       }
     </style>
   </head>
@@ -40,17 +45,17 @@
       <tr>
         <td align="center" valign="top">
           <table
+            class="content"
             border="0"
             cellpadding="20"
             cellspacing="0"
-            width="600"
             id="emailContainer"
           >
             <tr>
               <td
                 style="background-color: #121212; height: 60px"
                 align="center"
-                valign="top"
+                valign="center"
               >
                 <table
                   border="0"
@@ -60,8 +65,12 @@
                   id="emailHeader"
                 >
                   <tr>
-                    <td align="center" valign="top">
-                      <!-- <img src="cid:logo_image123" alt="logga"> -->
+                    <td align="left" valign="center">
+                      <img
+                        style="width: 250px; height: auto; margin-left: 10px"
+                        src="https://www.test.laddboxkillarna.se/_nuxt/img/logo_full_white.72d6bea.svg"
+                        alt="logga"
+                      />
                     </td>
                   </tr>
                 </table>
@@ -120,23 +129,48 @@
                   <td height="20"></td>
 
                   <tr>
-                    <td style="color: white; font-size: 14px;" align="center" valign="top">
+                    <td
+                      style="color: white; font-size: 14px"
+                      align="center"
+                      valign="top"
+                    >
                       Laddboxkillarna AB
                     </td>
                   </tr>
                   <tr>
-                    <td style="color: white; font-size: 14px;" align="center" valign="top">
+                    <td
+                      style="color: white; font-size: 14px"
+                      align="center"
+                      valign="top"
+                    >
                       Östra Eriksbergsgatan 85A
                     </td>
                   </tr>
                   <tr>
-                    <td style="color: white; font-size: 14px;" align="center" valign="top">
+                    <td
+                      style="color: white; font-size: 14px"
+                      align="center"
+                      valign="top"
+                    >
                       417 62 Göteborg
                     </td>
                   </tr>
                   <tr>
-                    <td style="color: white; font-size: 14px;" align="center" valign="top">
-                     <a style="color: white; font-size: 14px; text-decoration: underline;" href="tel:031-250100"> 031-25 01 00</a>
+                    <td
+                      style="color: white; font-size: 14px"
+                      align="center"
+                      valign="top"
+                    >
+                      <a
+                        style="
+                          color: white;
+                          font-size: 14px;
+                          text-decoration: underline;
+                        "
+                        href="tel:031-250100"
+                      >
+                        031-25 01 00</a
+                      >
                     </td>
                   </tr>
                   <td height="20"></td>

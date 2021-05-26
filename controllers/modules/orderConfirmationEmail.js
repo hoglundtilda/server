@@ -16,7 +16,7 @@ exports.createOrderConfirmationEmail = async (order) => {
   let confirmationEmail = {
     from: process.env.KEVIN_MAIL,
     to: order.email,
-    subject: order.subject,
+    subject: "Tack för din beställning",
     html: confirmationEmailTemplate,
   };
 
