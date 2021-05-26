@@ -12,13 +12,7 @@ exports.createContactEmail = async (email) => {
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
-    replacements = {
-      firstName: email.firstName,
-      lastName: email.lastName,
-      email: email.email,
-      subject: email.subject,
-      message: email.message
-    },
+    replacements = email
     contactEmailTemplate = template(replacements)
 
   let contactEmail = {

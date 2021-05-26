@@ -12,7 +12,6 @@ exports.createOrderEmail = async (order) => {
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
     replacements = order
-    console.log(replacements)
     orderEmailTemplate = template(replacements)
 
   let orderEmail = {

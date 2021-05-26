@@ -6,12 +6,11 @@ const { transporter } = require("./transporter"),
   htmlTemplate = "../../templates/html/contactConfirmation.html";
 
 exports.createContactConfirmationEmail = async (email) => {
+  
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
-    replacements = {
-      firstName: email.firstName,
-    },
+    replacements = email
     confirmationEmailTemplate = template(replacements);
 
   let confirmationEmail = {
