@@ -1,5 +1,4 @@
 const { transporter } = require("./transporter"),
-  //{readHTMLFile} = require ("./createEmail"),
   handlebars = require("handlebars"),
   fs = require("fs"),
   path = require("path"),

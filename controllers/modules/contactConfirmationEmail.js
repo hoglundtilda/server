@@ -1,5 +1,4 @@
 const { transporter } = require("./transporter"),
-  //{readHTMLFile} = require ("./createEmail"),
   handlebars = require("handlebars"),
   fs = require("fs"),
   path = require("path"),
@@ -26,7 +25,8 @@ exports.createContactConfirmationEmail = async (email) => {
       return err;
     } else {
       console.log(response);
-      return response;
+      return 'success'
+      //return response;
     }
   });
 };
