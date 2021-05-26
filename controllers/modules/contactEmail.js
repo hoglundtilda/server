@@ -2,7 +2,9 @@ const { transporter } = require("./transporter"),
   handlebars = require("handlebars"),
   fs = require('fs'),
   path = require("path"),
-  htmlTemplate = "../../templates/html/contact.html";
+  htmlTemplate = "../../templates/html/contact.html",
+  mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
+
 
 exports.createContactEmail = async (email) => {
   console.log(email);
@@ -17,13 +19,12 @@ exports.createContactEmail = async (email) => {
       subject: email.subject,
       message: email.message
     },
-    contactEmailTemplate = template(replacements),
-    mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
+    contactEmailTemplate = template(replacements)
 
   let contactEmail = {
     from: process.env.KEVIN_MAIL,
     to: mailList,
-    subject: `Email från: ${email.firstName + email.Lastname}`,
+    subject: `Email från: ${email.firstName} ${email.lastName}`,
     html: contactEmailTemplate,
   };
 

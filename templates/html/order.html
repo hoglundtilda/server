@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Order email</title>
+    <style>
+      html {
+        font-family: "Raleway", sans-serif;
+        height: 100%;
+      }
+
+      tr td {
+        margin: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table border="0" cellpadding="0" cellspacing="0" height="auto" width="50%">
+      <td height="40"></td>
+      <tr>
+        <th  valign="top" align="left">Beställning Laddbox</th>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <th  valign="top" align="left">Namn: {{firstName}} {{lastName}}</th>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <td valign="top"><a href="`mailto:${email}`">Email: {{email}}</a></td>
+      </tr>
+      <td height="30"></td>
+      <tr>
+        <td valign="top" align="left">Adress: {{adress}}</td>
+      </tr>
+      <tr>
+        <td valign="top" align="left">Postnummer: {{postNr}}</td>
+      </tr>
+      <tr>
+        <td valign="top" align="left">Ort: {{ort}}</td>
+      </tr>
+      <tr>
+        <td valign="top" align="left">Tlf: {{phoneNr}}</td>
+      </tr>
+      <td height="30"></td>
+      <tr>
+        <td valign="top" align="left">Övriga upplysningar: {{information}}</td>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <td valign="top">Färg: {{color}}</td>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <td valign="top">Konsultation: {{consultation}}</td>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <td valign="top">Laddkabel: {{charging_cable}}</td>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <td valign="top">Avtalsvillkor: {{contract_terms}}</td>
+      </tr>
+    </table>
+  </body>
+</html>
