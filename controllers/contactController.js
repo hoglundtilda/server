@@ -1,8 +1,8 @@
-const validate = require("../services/middleware/validation"),
-  { createContactEmail } = require("./modules/contactEmail"),
+const validate = require('../services/middleware/validation'),
+  { createContactEmail } = require('./modules/contactEmail'),
   {
     createContactConfirmationEmail,
-  } = require("./modules/contactConfirmationEmail");
+  } = require('./modules/contactConfirmationEmail');
 
 exports.validation = validate;
 
@@ -15,12 +15,10 @@ exports.contact = async (req, res, err) => {
       email
     );
 
-    if (contactEmail === "success" && contactConfirmationEmail === "success")
-      res.json("success");
+    if (contactEmail === 'success' && contactConfirmationEmail === 'success')
+      res.json('success');
   } catch (err) {
-    if (err) {
-      res.send(err);
-    }
+    res.send(err);
   }
 
   // await createContactEmail(email).then((response) => {
