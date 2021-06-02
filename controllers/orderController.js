@@ -16,8 +16,6 @@ exports.order = async (req, res, err) => {
     if (orderEmail === "success" && orderConfirmationEmail === "success")
       res.json("success");
   } catch (err) {
-    if (err) {
       res.send(err);
-    }
   }
 };
