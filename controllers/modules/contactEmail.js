@@ -15,7 +15,7 @@ exports.createContactEmail = async (email) => {
     contactEmailTemplate = template(replacements)
 
   let contactEmail = {
-    from: process.env.KEVIN_MAIL,
+    from: process.env.ALEXANDER_MAIL,
     to: mailList,
     subject: `Email från: ${email.firstName} ${email.lastName}`,
     html: contactEmailTemplate,
@@ -24,11 +24,10 @@ exports.createContactEmail = async (email) => {
   await transporter.sendMail(contactEmail, (err, response) => {
     if (err) {
       console.log(err)
-      throw new Error(err)      
+      return err 
     } else {
-      console.log(response)
+      console.log({ response: response });
       return 'success'
-      //return response;
     }
   });
 };
