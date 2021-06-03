@@ -21,7 +21,7 @@ exports.createOrderConfirmationEmail = async (order) => {
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
       console.log(err);
-      throw new Error(err);
+      return err
     } else {
       console.log(response);
       return "success";
