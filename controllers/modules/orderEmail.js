@@ -1,18 +1,16 @@
 const { transporter } = require("./transporter"),
   handlebars = require("handlebars"),
-  fs = require('fs'),
+  fs = require("fs"),
   path = require("path"),
   htmlTemplate = "../../templates/html/order.html",
   mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
 
-
 exports.createOrderEmail = async (order) => {
-
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
-    replacements = order
-    orderEmailTemplate = template(replacements)
+    replacements = order;
+  orderEmailTemplate = template(replacements);
 
   let orderEmail = {
     from: process.env.ALEXANDER_MAIL,
@@ -23,11 +21,11 @@ exports.createOrderEmail = async (order) => {
 
   await transporter.sendMail(orderEmail, (err, response) => {
     if (err) {
-      throw err
+      console.log(err);
+      throw new Error(err);
     } else {
-      
-      console.log( {response: response })
-      return response = {status: 200}
+      console.log({ response: response });
+      return "success";
     }
   });
 };

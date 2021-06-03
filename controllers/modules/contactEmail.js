@@ -24,7 +24,7 @@ exports.createContactEmail = async (email) => {
   await transporter.sendMail(contactEmail, (err, response) => {
     if (err) {
       console.log(err)
-      return err;
+      throw new Error(err)      
     } else {
       console.log(response)
       return 'success'

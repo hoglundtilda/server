@@ -16,18 +16,11 @@ exports.contact = async (req, res, err) => {
     );
 
     if (contactEmail === 'success' && contactConfirmationEmail === 'success')
-      res.json('success');
+      res.status(200).send('Ditt meddelande har skickats');
+
   } catch (err) {
     res.send(err);
+    throw new Error(err)
   }
 
-  // await createContactEmail(email).then((response) => {
-  //   console.log(response)
-  //   res.json(response);
-  // });
-
-  // await createContactConfirmationEmail(email).then((response) => {
-  //   console.log(response)
-  //   res.json(response);
-  // });
 };

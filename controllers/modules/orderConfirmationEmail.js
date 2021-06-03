@@ -5,12 +5,11 @@ const { transporter } = require("./transporter"),
   htmlTemplate = "../../templates/html/orderConfirmation.html";
 
 exports.createOrderConfirmationEmail = async (order) => {
-  
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
-    replacements = order
-    confirmationEmailTemplate = template(replacements);
+    replacements = order;
+  confirmationEmailTemplate = template(replacements);
 
   let confirmationEmail = {
     from: process.env.ALEXANDER_MAIL,
@@ -22,10 +21,10 @@ exports.createOrderConfirmationEmail = async (order) => {
   await transporter.sendMail(confirmationEmail, (err, response) => {
     if (err) {
       console.log(err);
-      return err;
+      throw new Error(err);
     } else {
       console.log(response);
-      return 'success'
+      return "success";
       //return response;
     }
   });
