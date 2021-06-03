@@ -15,7 +15,6 @@ exports.order = async (req, res, err) => {
 
     if (orderEmail === "success" && orderConfirmationEmail === "success")
       res.status(200).send("Beställning skickad");
-      
   } catch (err) {
     res.send(err);
   }

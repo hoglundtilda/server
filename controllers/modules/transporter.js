@@ -18,8 +18,4 @@ exports.transporter = nodemailer.createTransport({
   tls: {
     ciphers: "SSLv3",
   },
-  auth: {
-    user: 'apikey',
-    pass: process.env.SENDGRID_API_KEY,
-  },
 });

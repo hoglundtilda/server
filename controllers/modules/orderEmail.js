@@ -22,7 +22,7 @@ exports.createOrderEmail = async (order) => {
   await transporter.sendMail(orderEmail, (err, response) => {
     if (err) {
       console.log(err);
-      throw new Error(err);
+      return err
     } else {
       console.log({ response: response });
       return "success";
