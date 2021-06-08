@@ -27,10 +27,14 @@ exports.createContactEmail = async (email) => {
     .then((response) => {
       console.log(response[0].statusCode);
       console.log(response[0].headers);
+      console.log(response[0].body);
+
       return 'success';
     })
     .catch((error) => {
       console.error({catchContact1: error});
+      console.error(error.response.body);
+
       return error;
     });
 };

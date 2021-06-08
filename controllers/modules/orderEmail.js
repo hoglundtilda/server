@@ -28,6 +28,8 @@ exports.createOrderEmail = async (order) => {
     .then((response) => {
       console.log(response[0].statusCode);
       console.log(response[0].headers);
+      console.log(response[0].body);
+
       return "success";
     })
     .catch((error) => {
