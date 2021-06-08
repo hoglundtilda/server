@@ -19,9 +19,5 @@ exports.contact = async (req, res, err) => {
     });
   }
 
-  if (err) {
-    res.status(500).send({
-      error: err,
-    });
-  }
+
 };
