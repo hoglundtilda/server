@@ -6,6 +6,7 @@ const { transporter } = require("./transporter"),
   mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
 
 exports.createOrderEmail = async (order) => {
+  console.log(order)
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
