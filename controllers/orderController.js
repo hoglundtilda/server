@@ -13,8 +13,12 @@ exports.order = async (req, res, err) => {
     const orderConfirmationEmail = await createOrderConfirmationEmail(order);
 
     if (orderEmail === "success" && orderConfirmationEmail === "success") {
+      console.log("success")
       res.status(200).send("Beställning skickad");
     } else {
+      console.log("here")
+      console.log({orderEmail})
+      console.log({orderConfirmationEmail})
       res
         .status(500)
         .send(
