@@ -27,10 +27,10 @@ exports.createOrderConfirmationEmail = async (order) => {
     .then((response) => {
       console.log(response[0].statusCode);
       console.log(response[0].headers);
-      return response;
+      return 'success';
     })
     .catch((error) => {
-      console.error(error);
+      console.error({catchOrder2: error});
       return error;
     });
 };

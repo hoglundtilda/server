@@ -28,7 +28,7 @@ exports.createContactEmail = async (email) => {
       return 'success';
     })
     .catch((error) => {
-      console.error(error);
+      console.error({catchContact1: error});
       return error;
     });
 };

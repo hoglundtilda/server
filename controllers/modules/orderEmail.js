@@ -29,7 +29,7 @@ exports.createOrderEmail = async (order) => {
       return "success";
     })
     .catch((error) => {
-      console.error(error);
+      console.error({catchOrder1: error});
       return error;
     });
 };
