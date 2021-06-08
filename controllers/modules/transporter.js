@@ -10,8 +10,8 @@ exports.transporter = nodemailer.createTransport({
   secure: false,
   requireTLS: true,
   auth: {
-    user: process.env.ALEXANDER_MAIL,
-    pass: process.env.ALEXANDER_PW,
+    user: process.env.KEVIN_MAIL,
+    pass: process.env.KEVIN_PW,
   },
   tls: {
     ciphers: "SSLv3",
