@@ -1,5 +1,4 @@
-const { transporter } = require("./transporter"),
-  sgMail = require("@sendgrid/mail"),
+const sgMail = require("@sendgrid/mail"),
   handlebars = require("handlebars"),
   fs = require("fs"),
   path = require("path"),
@@ -28,18 +27,10 @@ exports.createOrderEmail = async (order) => {
     .then((response) => {
       console.log(response[0].statusCode);
       console.log(response[0].headers);
+      return "success";
     })
     .catch((error) => {
       console.error(error);
+      return error;
     });
-
-  // await transporter.sendMail(orderEmail, (err, response) => {
-  //   if (err) {
-  //     console.log(err);
-  //     return err
-  //   } else {
-  //     console.log({ response: response });
-  //     return "success";
-  //   }
-  // });
 };
