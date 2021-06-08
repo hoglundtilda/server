@@ -12,7 +12,7 @@ exports.createOrderConfirmationEmail = async (order) => {
   confirmationEmailTemplate = template(replacements);
 
   let confirmationEmail = {
-    from: process.env.ALEXANDER_MAIL,
+    from: process.env.KEVIN_MAIL,
     to: order.email,
     subject: "Tack för din beställning",
     html: confirmationEmailTemplate,

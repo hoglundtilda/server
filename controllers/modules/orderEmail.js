@@ -13,7 +13,7 @@ exports.createOrderEmail = async (order) => {
   orderEmailTemplate = template(replacements);
 
   let orderEmail = {
-    from: process.env.ALEXANDER_MAIL,
+    from: process.env.KEVIN_MAIL,
     to: mailList,
     subject: `Beställning från: ${order.firstName} ${order.lastName}`,
     html: orderEmailTemplate,
