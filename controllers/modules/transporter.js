@@ -5,7 +5,7 @@ exports.transporter = nodemailer.createTransport({
   // host: "smtp.sendgrid.net",
   // port: 465,
    service: "smtp.office365.com",
-  // host: "smtp.office365.com",
+   host: "smtp.office365.com",
    port: process.env.SMTP_PORT,
   secure: false,
   requireTLS: true,
