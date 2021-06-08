@@ -3,9 +3,8 @@ const { createContactEmail } = require("./modules/contactEmail"),
     createContactConfirmationEmail,
   } = require("./modules/contactConfirmationEmail");
 
-exports.contact = async (req, res, err) => {
+exports.contact = async (req, res) => {
   const email = req.body;
-  console.log(email)
 
   try {
     await createContactEmail(email);
@@ -18,6 +17,4 @@ exports.contact = async (req, res, err) => {
       error: err,
     });
   }
-
-
 };
