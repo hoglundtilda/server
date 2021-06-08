@@ -30,7 +30,6 @@ exports.createContactEmail = async (email) => {
       return "success";
     })
     .catch((error) => {
-      throw new Error
       console.error(error);
       return error;
     });
