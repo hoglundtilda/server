@@ -18,7 +18,7 @@ exports.order = async (req, res, err) => {
     res.write({
       status: 500,
       message:
-        "3 Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
+        "Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
     });
   } finally {
     res.send();
@@ -28,7 +28,7 @@ exports.order = async (req, res, err) => {
     res.write({
       status: 500,
       message:
-        "4 Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
+        "Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
     });
     res.send();
   }

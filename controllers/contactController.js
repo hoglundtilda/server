@@ -16,15 +16,17 @@ exports.contact = async (req, res, err) => {
     res.write({
       status: 500,
       message:
-        "1 Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
+        "Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
     });
+  } finally {
+    res.send();
   }
 
   if (err) {
     res.write({
       status: 500,
       message:
-        "2 Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
+        "Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
     });
     res.send();
   }
