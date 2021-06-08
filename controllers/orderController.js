@@ -9,28 +9,27 @@ exports.order = async (req, res, err) => {
   order.consultation = order.consultation ? "Ja" : " Nej";
 
   try {
-    const orderEmail = await createOrderEmail(order);
-    const orderConfirmationEmail = await createOrderConfirmationEmail(order);
+    await createOrderEmail(order);
+    await createOrderConfirmationEmail(order);
 
-    if (orderEmail === "success" && orderConfirmationEmail === "success") {
-      console.log("success");
-      res.status(200).send("Beställning skickad");
-    }
-
-    if (err) {
-      console.log(err);
-      res
-        .status(500)
-        .send(
-          "Tyvärr något gick fel"
-        );
-    }
+    res.write({ status: 200, message: "Ditt meddelande har skickats" });
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .send(
-        "Tyvärr något gick fel, vänligen kontakta oss per telefon eller email"
-      );
+    res.write({
+      status: 500,
+      message:
+        "3 Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
+    });
+  } finally {
+    res.send();
+  }
+
+  if (err) {
+    res.write({
+      status: 500,
+      message:
+        "4 Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
+    });
+    res.send();
   }
 };
