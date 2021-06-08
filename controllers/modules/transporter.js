@@ -4,10 +4,10 @@ exports.transporter = nodemailer.createTransport({
   // service: "SendGrid",
   // host: "smtp.sendgrid.net",
   // port: 465,
-   service: "outlook.office365.com",
-   host: "outlook.office365.com",
-   port: 993,
-  secure: true,
+   //service: "outlook.office365.com",
+   host: "smtp.office365.com",
+   port: 587,
+   secureConnection: false,
  // requireTLS: true,
   auth: {
     user: process.env.KEVIN_MAIL,
@@ -15,6 +15,8 @@ exports.transporter = nodemailer.createTransport({
   },
   tls: {
     // do not fail on invalid certs
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
+    ciphers:'SSLv3'
+
   }
 });
