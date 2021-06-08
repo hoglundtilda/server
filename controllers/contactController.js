@@ -1,10 +1,7 @@
-const validate = require("../services/middleware/validation"),
-  { createContactEmail } = require("./modules/contactEmail"),
+const { createContactEmail } = require("./modules/contactEmail"),
   {
     createContactConfirmationEmail,
   } = require("./modules/contactConfirmationEmail");
-
-exports.validation = validate;
 
 exports.contact = async (req, res, err) => {
   const email = req.body.email;
