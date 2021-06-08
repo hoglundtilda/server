@@ -24,7 +24,6 @@ exports.createContactConfirmationEmail = async (email) => {
     .send(confirmationEmail)
     .then((response) => {
       console.log(response[0].statusCode);
-      console.log(response[0].headers);
       return 'success'
     })
     .catch((error) => {
