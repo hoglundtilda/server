@@ -12,13 +12,14 @@ exports.createContactConfirmationEmail = async (email) => {
     replacements = email;
   confirmationEmailTemplate = template(replacements);
 
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
   let confirmationEmail = {
     from: process.env.ALEXANDER_MAIL,
     to: email.email,
     subject: email.subject,
     html: confirmationEmailTemplate,
   };
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   sgMail
     .send(confirmationEmail)

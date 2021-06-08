@@ -12,13 +12,15 @@ exports.createContactEmail = async (email) => {
     replacements = email;
   contactEmailTemplate = template(replacements);
 
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+
   let contactEmail = {
     from: process.env.ALEXANDER_MAIL,
     to: mailList,
     subject: `Email från: ${email.firstName} ${email.lastName}`,
     html: contactEmailTemplate,
   };
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   sgMail
     .send(contactEmail)
