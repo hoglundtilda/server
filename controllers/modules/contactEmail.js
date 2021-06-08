@@ -5,8 +5,6 @@ const sgMail = require("@sendgrid/mail"),
   htmlTemplate = "../../templates/html/contact.html",
   mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 exports.createContactEmail = async (email) => {
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
@@ -20,13 +18,14 @@ exports.createContactEmail = async (email) => {
     subject: `Email från: ${email.firstName} ${email.lastName}`,
     html: contactEmailTemplate,
   };
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   sgMail
     .send(contactEmail)
     .then((response) => {
       console.log(response[0].statusCode);
       console.log(response[0].headers);
-      return response;
+      return 'success';
     })
     .catch((error) => {
       console.error(error);

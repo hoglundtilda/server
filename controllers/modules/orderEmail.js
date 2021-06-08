@@ -5,8 +5,6 @@ const sgMail = require("@sendgrid/mail"),
   htmlTemplate = "../../templates/html/order.html",
   mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 exports.createOrderEmail = async (order) => {
   console.log(order);
   const filePath = path.join(__dirname, htmlTemplate),
@@ -21,6 +19,7 @@ exports.createOrderEmail = async (order) => {
     subject: `Beställning från: ${order.firstName} ${order.lastName}`,
     html: orderEmailTemplate,
   };
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   sgMail
     .send(orderEmail)

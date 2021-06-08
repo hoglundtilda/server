@@ -4,7 +4,7 @@ const sgMail = require("@sendgrid/mail"),
   path = require("path"),
   htmlTemplate = "../../templates/html/orderConfirmation.html";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 exports.createOrderConfirmationEmail = async (order) => {
   const filePath = path.join(__dirname, htmlTemplate),
@@ -19,6 +19,8 @@ exports.createOrderConfirmationEmail = async (order) => {
     subject: "Tack för din beställning",
     html: confirmationEmailTemplate,
   };
+
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   sgMail
     .send(confirmationEmail)

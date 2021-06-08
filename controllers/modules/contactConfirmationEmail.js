@@ -4,7 +4,6 @@ const sgMail = require("@sendgrid/mail"),
   path = require("path"),
   htmlTemplate = "../../templates/html/contactConfirmation.html";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.createContactConfirmationEmail = async (email) => {
   const filePath = path.join(__dirname, htmlTemplate),
@@ -19,13 +18,14 @@ exports.createContactConfirmationEmail = async (email) => {
     subject: email.subject,
     html: confirmationEmailTemplate,
   };
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   sgMail
     .send(confirmationEmail)
     .then((response) => {
       console.log(response[0].statusCode);
       console.log(response[0].headers);
-      return response;
+      return 'success';
     })
     .catch((error) => {
       console.error(error);
