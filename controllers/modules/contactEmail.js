@@ -26,6 +26,7 @@ exports.createContactEmail = async (email) => {
     .then((response) => {
       console.log(response[0].statusCode);
       console.log(response[0].headers);
+      console.log("here 123")
       return "success";
     })
     .catch((error) => {
