@@ -11,7 +11,6 @@
     "express-validator": "^6.11.1",
     "fs": "0.0.1-security",
     "nodemailer": "^6.6.1",
-    "nodemailer-juice": "^1.0.1",
     "path": "^0.12.7"
   },
   "devDependencies": {},
