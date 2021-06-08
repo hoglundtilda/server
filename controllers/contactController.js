@@ -7,26 +7,25 @@ exports.contact = async (req, res, err) => {
   const email = req.body.email;
 
   try {
-    const contactEmail = await createContactEmail(email);
-    const contactConfirmationEmail = await createContactConfirmationEmail(
-      email
-    );
+    await createContactEmail(email);
+    await createContactConfirmationEmail(email);
 
-    if (contactEmail === "success" && contactConfirmationEmail === "success") {
-      res.status(200).send("Ditt meddelande har skickats");
-    } else {
-      res
-        .status(500)
-        .send(
-          "Tyvärr något gick fel, vänligen kontakta oss per telefon eller email"
-        );
-    }
+    res.write({ status: 200, message: "Ditt meddelande har skickats" });
   } catch (err) {
     console.log(err);
-    res
-      .status(500)
-      .send(
-        "Tyvärr något gick fel, vänligen kontakta oss per telefon eller email"
-      );
+    res.write({
+      status: 500,
+      message:
+        "1 Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
+    });
+  }
+
+  if (err) {
+    res.write({
+      status: 500,
+      message:
+        "2 Tyvärr något gick fel, vänligen kontakta oss per telefon eller email",
+    });
+    res.send();
   }
 };
