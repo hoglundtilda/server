@@ -24,7 +24,8 @@ exports.createOrderConfirmationEmail = async (order) => {
     .send(confirmationEmail)
     .then((response) => {
       console.log(response[0].statusCode);
-      return "success";
+      console.log(response[0].headers);
+      return response;
     })
     .catch((error) => {
       console.error(error);
