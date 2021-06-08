@@ -1,5 +1,4 @@
-const nodemailer = require("nodemailer"),
-  sgTransport = require("nodemailer-sendgrid-transport");
+const nodemailer = require("nodemailer");
 
 exports.transporter = nodemailer.createTransport({
   // service: "SendGrid",

@@ -1,13 +1,12 @@
-const validate = require("../services/middleware/validation"),
-  { createOrderEmail } = require("./modules/orderEmail"),
+const { createOrderEmail } = require("./modules/orderEmail"),
   {
     createOrderConfirmationEmail,
   } = require("./modules/orderConfirmationEmail");
 
-exports.validation = validate;
-
 exports.order = async (req, res, err) => {
-  const order = req.body.order;
+  let order = req.body;
+  order.charging_cable = order.charging_cable ? "Ja" : " Nej";
+  order.consultation = order.consultation ? "Ja" : " Nej";
 
   try {
     const orderEmail = await createOrderEmail(order);
