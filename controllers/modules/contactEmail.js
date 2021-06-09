@@ -1,4 +1,5 @@
 const sgMail = require("@sendgrid/mail"),
+  { transporter } = require("./transporter"),
   handlebars = require("handlebars"),
   fs = require("fs"),
   path = require("path"),
@@ -14,7 +15,6 @@ exports.createContactEmail = async (email) => {
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-
   let contactEmail = {
     from: process.env.ALEXANDER_MAIL,
     to: mailList,
@@ -22,19 +22,15 @@ exports.createContactEmail = async (email) => {
     html: contactEmailTemplate,
   };
 
-  sgMail
-    .send(contactEmail)
+  await transporter
+    .sendMail(contactEmail)
     .then((response) => {
-      console.log(response[0].statusCode);
-      console.log(response[0].headers);
-      console.log(response[0].body);
-
-      return 'success';
+      console.log(response);
+      return "success";
     })
     .catch((error) => {
-      console.error({catchContact1: error});
+      console.error({ catchContact1: error });
       console.error(error.response.body);
-
       return error;
     });
 };
