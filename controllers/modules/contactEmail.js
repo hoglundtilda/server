@@ -13,8 +13,6 @@ exports.createContactEmail = async (email) => {
     replacements = email;
   contactEmailTemplate = template(replacements);
 
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
   let contactEmail = {
     from: process.env.ALEXANDER_MAIL,
     to: mailList,
@@ -25,12 +23,11 @@ exports.createContactEmail = async (email) => {
   await transporter
     .sendMail(contactEmail)
     .then((response) => {
-      console.log(response);
-      return "success";
+      console.log(response)
+      return response;
     })
     .catch((error) => {
-      console.error({ catchContact1: error });
-      console.error(error.response.body);
+      console.error({ catchContact2: error });
       return error;
     });
 };
