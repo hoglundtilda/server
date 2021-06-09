@@ -1,10 +1,9 @@
 const sgMail = require("@sendgrid/mail"),
+  { transporter } = require("./transporter"),
   handlebars = require("handlebars"),
   fs = require("fs"),
   path = require("path"),
   htmlTemplate = "../../templates/html/orderConfirmation.html";
-
-
 
 exports.createOrderConfirmationEmail = async (order) => {
   const filePath = path.join(__dirname, htmlTemplate),
@@ -20,17 +19,14 @@ exports.createOrderConfirmationEmail = async (order) => {
     html: confirmationEmailTemplate,
   };
 
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-  sgMail
-    .send(confirmationEmail)
+  await transporter
+    .sendMail(confirmationEmail)
     .then((response) => {
-      console.log(response[0].statusCode);
-      console.log(response[0].headers);
-      return 'success';
+      console.log(response)
+      return response;
     })
     .catch((error) => {
-      console.error({catchOrder2: error});
+      console.error({ catchContact2: error });
       return error;
     });
 };

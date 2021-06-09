@@ -1,4 +1,5 @@
 const sgMail = require("@sendgrid/mail"),
+{ transporter } = require("./transporter"),
   handlebars = require("handlebars"),
   fs = require("fs"),
   path = require("path"),
@@ -13,8 +14,6 @@ exports.createOrderEmail = async (order) => {
     replacements = order;
   orderEmailTemplate = template(replacements);
 
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 
   let orderEmail = {
     from: process.env.ALEXANDER_MAIL,
@@ -23,17 +22,14 @@ exports.createOrderEmail = async (order) => {
     html: orderEmailTemplate,
   };
 
-  sgMail
-    .send(orderEmail)
+  await transporter
+    .sendMail(orderEmail)
     .then((response) => {
-      console.log(response[0].statusCode);
-      console.log(response[0].headers);
-      console.log(response[0].body);
-
-      return "success";
+      console.log(response)
+      return response;
     })
     .catch((error) => {
-      console.error({catchOrder1: error});
+      console.error({ catchContact2: error });
       return error;
     });
 };
