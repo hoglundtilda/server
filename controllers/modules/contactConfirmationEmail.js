@@ -24,7 +24,7 @@ exports.createContactConfirmationEmail = async (email) => {
     .sendMail(confirmationEmail)
     .then((response) => {
       console.log(response)
-      return "success";
+      return response;
     })
     .catch((error) => {
       console.error({ catchContact2: error });
