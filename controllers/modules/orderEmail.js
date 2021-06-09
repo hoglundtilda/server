@@ -3,7 +3,7 @@ const sgMail = require("@sendgrid/mail"),
   fs = require("fs"),
   path = require("path"),
   htmlTemplate = "../../templates/html/order.html",
-  mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
+  mailList = [process.env.ALEXANDER_MAIL];
 
 exports.createOrderEmail = async (order) => {
   console.log(order);

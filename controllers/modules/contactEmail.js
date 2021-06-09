@@ -4,7 +4,7 @@ const sgMail = require("@sendgrid/mail"),
   fs = require("fs"),
   path = require("path"),
   htmlTemplate = "../../templates/html/contact.html",
-  mailList = [process.env.ALEXANDER_MAIL, process.env.KEVIN_MAIL];
+  mailList = [process.env.ALEXANDER_MAIL];
 
 exports.createContactEmail = async (email) => {
   const filePath = path.join(__dirname, htmlTemplate),
