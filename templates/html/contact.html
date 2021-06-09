@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact email</title>
+    <style>
+      html {
+        font-family: "Raleway", sans-serif;
+        height: 100%;
+      }
+
+      tr td {
+        margin: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table border="0" cellpadding="0" cellspacing="0" height="auto" width="50%">
+      <td height="40"></td>
+      <tr>
+        <td valign="top" align="left">Nytt meddelande från:</td>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <th valign="top" align="left">Namn: {{firstName}} {{lastName}}</th>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <td valign="top"><a href="`mailto:${email}`">Email: {{email}}</a></td>
+      </tr>
+      <td height="30"></td>
+      <tr>
+        <th valign="top" align="left">Ämne: {{subject}}</th>
+      </tr>
+      <td height="10"></td>
+      <tr>
+        <td valign="top">Meddelande: {{message}}</td>
+      </tr>
+    </table>
+  </body>
+</html>
