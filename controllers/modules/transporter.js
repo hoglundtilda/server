@@ -24,10 +24,10 @@ const sgMail = require("@sendgrid/mail");
 // });
 
 exports.transporter = nodemailer.createTransport({
-  server: "smtp.sendgrid.net",
+  host: "smtp.sendgrid.net",
   port: 465,
   secureConnection: true,
-  requireTLS: false,
+  //requireTLS: true,
   auth: {
     user: process.env.USER,
     pass: process.env.SMTPRELAY,

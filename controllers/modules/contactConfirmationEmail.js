@@ -6,13 +6,12 @@ const sgMail = require("@sendgrid/mail"),
   htmlTemplate = "../../templates/html/contactConfirmation.html";
 
 exports.createContactConfirmationEmail = async (email) => {
+  console.log(email)
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
     replacements = email;
   confirmationEmailTemplate = template(replacements);
-
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   let confirmationEmail = {
     from: process.env.ALEXANDER_MAIL,
@@ -24,8 +23,7 @@ exports.createContactConfirmationEmail = async (email) => {
   await transporter
     .sendMail(confirmationEmail)
     .then((response) => {
-      console.log(response[0].statusCode);
-      console.log(response[0].headers);
+      console.log(response)
       return "success";
     })
     .catch((error) => {
