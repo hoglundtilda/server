@@ -1,9 +1,9 @@
 const sgMail = require("@sendgrid/mail"),
+  { transporter } = require("./transporter"),
   handlebars = require("handlebars"),
   fs = require("fs"),
   path = require("path"),
   htmlTemplate = "../../templates/html/contactConfirmation.html";
-
 
 exports.createContactConfirmationEmail = async (email) => {
   const filePath = path.join(__dirname, htmlTemplate),
@@ -21,15 +21,15 @@ exports.createContactConfirmationEmail = async (email) => {
     html: confirmationEmailTemplate,
   };
 
-  sgMail
-    .send(confirmationEmail)
+  await transporter
+    .sendMail(confirmationEmail)
     .then((response) => {
       console.log(response[0].statusCode);
       console.log(response[0].headers);
-      return 'success';
+      return "success";
     })
     .catch((error) => {
-      console.error({catchContact2: error});
+      console.error({ catchContact2: error });
       return error;
     });
 };
