@@ -1,7 +1,7 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 exports.transporter = nodemailer.createTransport({
-  host: "smtp.sendgrid.net",
+  host: 'smtp.sendgrid.net',
   port: 465,
   secureConnection: true,
   auth: {
