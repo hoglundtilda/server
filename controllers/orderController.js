@@ -11,8 +11,8 @@ exports.order = async (req, res, err) => {
   try {
     await createOrderEmail(order);
     await createOrderConfirmationEmail(order);
-    res.status(200).send({ message: 'Din beställning har skickats' });
     console.log('TRY HERE');
+    res.status(200).send({ message: 'Din beställning har skickats' });
   } catch (error) {
     console.log(error);
     console.log('IM IN CATCH');
