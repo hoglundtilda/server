@@ -21,7 +21,7 @@ exports.createOrderEmail = async (order) => {
     html: orderEmailTemplate,
   };
 
-  await transporter.sendMail(orderEmail).then((error, info) => {
+  await transporter.sendMail(orderEmail, (error, info) =>  {
     if (!error) {
       return info;
     } else {
