@@ -23,7 +23,7 @@ exports.createOrderEmail = async (order) => {
 
   await transporter.sendMail(orderEmail, function (error, info) {
     if (error) {
-      console.log("HERE 123");
+     throw new Error(error)
     } else {
       return info;
     }
