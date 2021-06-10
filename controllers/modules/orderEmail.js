@@ -6,7 +6,7 @@ const sgMail = require("@sendgrid/mail"),
   htmlTemplate = "../../templates/html/order.html",
   mailList = [process.env.ALEXANDER_MAIL];
 
-exports.createOrderEmail = (order) => {
+exports.createOrderEmail = async (order) => {
   console.log(order);
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
@@ -21,7 +21,7 @@ exports.createOrderEmail = (order) => {
     html: orderEmailTemplate,
   };
 
-  transporter.sendMail(orderEmail, function (error, info) {
+ await transporter.sendMail(orderEmail, function (error, info) {
     if (error) {
       console.log(error)
       throw new Error(error)

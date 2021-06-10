@@ -5,7 +5,7 @@ const sgMail = require('@sendgrid/mail'),
   path = require('path'),
   htmlTemplate = '../../templates/html/orderConfirmation.html';
 
-exports.createOrderConfirmationEmail = (order) => {
+exports.createOrderConfirmationEmail = async (order) => {
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, 'utf-8').toString(),
     template = handlebars.compile(source),
@@ -19,7 +19,7 @@ exports.createOrderConfirmationEmail = (order) => {
     html: confirmationEmailTemplate,
   };
 
-  transporter.sendMail(confirmationEmail, (error, info) => {
+  await transporter.sendMail(confirmationEmail, (error, info) => {
     if (error) {
       throw new Error(error)
     } else {
