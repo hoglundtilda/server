@@ -11,11 +11,12 @@ exports.order = async (req, res, err) => {
   try {
     await createOrderEmail(order);
     await createOrderConfirmationEmail(order);
-    console.log('TRY HERE');
+
     res.status(200).send({ message: 'Din beställning har skickats' });
   } catch (error) {
     console.log(error);
     console.log('IM IN CATCH');
+    
     res.status(500).send({
       error:
         'Tyvärr något gick fel, vänligen kontakta oss per telefon eller email',
