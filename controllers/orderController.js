@@ -8,6 +8,10 @@ exports.order = async (req, res, err) => {
   order.charging_cable = order.charging_cable ? 'Ja' : ' Nej';
   order.consultation = order.consultation ? 'Ja' : ' Nej';
 
+  if (err) {
+    res.send(err);
+  }
+
   try {
     await createOrderEmail(order);
     await createOrderConfirmationEmail(order);
@@ -16,13 +20,11 @@ exports.order = async (req, res, err) => {
   } catch (error) {
     console.log(error);
     console.log('IM IN CATCH');
-    
+
     res.status(500).send({
       error:
         'Tyvärr något gick fel, vänligen kontakta oss per telefon eller email',
     });
   }
-  if (err) {
-    res.send(err);
-  }
+  
 };
