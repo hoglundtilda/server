@@ -19,7 +19,7 @@ exports.createOrderConfirmationEmail = async (order) => {
     html: confirmationEmailTemplate,
   };
 
-  await transporter.sendMail(confirmationEmail).then((error, info) => {
+  await transporter.sendMail(confirmationEmail, (error, info) => {
     if (!error) {
       return info;
     } else {
