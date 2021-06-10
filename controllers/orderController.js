@@ -3,14 +3,10 @@ const { createOrderEmail } = require('./modules/orderEmail'),
     createOrderConfirmationEmail,
   } = require('./modules/orderConfirmationEmail');
 
-exports.order = async (req, res, err) => {
+exports.order = async (req, res) => {
   let order = req.body;
   order.charging_cable = order.charging_cable ? 'Ja' : ' Nej';
   order.consultation = order.consultation ? 'Ja' : ' Nej';
-
-  if (err) {
-    res.send(err);
-  }
 
   try {
     await createOrderEmail(order);
@@ -19,7 +15,6 @@ exports.order = async (req, res, err) => {
     res.status(200).send({ message: 'Din beställning har skickats' });
   } catch (error) {
     console.log(error);
-    console.log('IM IN CATCH');
 
     res.status(500).send({
       error:

@@ -20,11 +20,14 @@ exports.createContactConfirmationEmail = async (email) => {
     html: confirmationEmailTemplate,
   };
 
-  await transporter
-    .sendMail(confirmationEmail)
-    .then((error, info) => {
-      console.log({error})
-      console.log({info})
+  transporter
+    .sendMail(confirmationEmail, (error, info) => {
+      if(error) {
+        throw new Error(error)
+      } else {
+        console.log({info})
+      }
+      
     
     });
 };

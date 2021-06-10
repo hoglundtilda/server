@@ -6,7 +6,7 @@ const sgMail = require("@sendgrid/mail"),
   htmlTemplate = "../../templates/html/contact.html",
   mailList = [process.env.ALEXANDER_MAIL];
 
-exports.createContactEmail = async (email) => {
+exports.createContactEmail = (email) => {
   const filePath = path.join(__dirname, htmlTemplate),
     source = fs.readFileSync(filePath, "utf-8").toString(),
     template = handlebars.compile(source),
@@ -20,11 +20,12 @@ exports.createContactEmail = async (email) => {
     html: contactEmailTemplate,
   };
 
-  await transporter
-    .sendMail(contactEmail)
-    .then((error, info) => {
-      console.log({error})
-      console.log({info})
-    
+  transporter
+    .sendMail(contactEmail, (error, info) => {
+      if(error) {
+        throw new Error(error)
+      } else {
+        console.log({info})
+      }
     });
 };
