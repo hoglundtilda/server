@@ -20,10 +20,10 @@ exports.createOrderConfirmationEmail = async (order) => {
   };
 
   await transporter.sendMail(confirmationEmail, (error, info) => {
-    if (!error) {
-      return info;
+    if (error) {
+      console.log(error)
     } else {
-      throw new Error(error);
+      return info
     }
   });
 };
