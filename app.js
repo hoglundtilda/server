@@ -3,7 +3,7 @@ const express = require('express'),
   cors = require('cors'),
   routes = require('./services/routes/index'),
   app = express(),
-  PORT = process.env.APP_PORT || 8000,
+  PORT = process.env.APP_PORT || 5050,
   CLIENT = process.env,
   corsOptions = {
     //origin: 'https://www.test.laddboxkillarna.se',
