@@ -12,8 +12,8 @@ exports.orderValidationRules = () => {
       body('phoneNr').matches(/(\+\d{2})?((\(0\)\d{2,3})|\d{2,3})?\d+/),
       body('color').isLength({min: 5}),
       body('information').isString(),
-      body('charging_cable').isString(),
-      body('consultation').isString(),
+      body('charging_cable').isBoolean(),
+      body('consultation').isBoolean(),
       body('agreement').matches(true),
     ]
     
