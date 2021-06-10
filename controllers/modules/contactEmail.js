@@ -22,12 +22,9 @@ exports.createContactEmail = async (email) => {
 
   await transporter
     .sendMail(contactEmail)
-    .then((response) => {
-      console.log(response)
-      return response;
-    })
-    .catch((error) => {
-      console.error({ catchContact2: error });
-      return error;
+    .then((error, info) => {
+      console.log({error})
+      console.log({info})
+    
     });
 };
