@@ -1,17 +1,19 @@
-const sgMail = require("@sendgrid/mail"),
-  { transporter } = require("./transporter"),
-  handlebars = require("handlebars"),
-  fs = require("fs"),
-  path = require("path"),
-  htmlTemplate = "../../templates/html/contact.html",
+const sgMail = require('@sendgrid/mail'),
+  { transporter } = require('./transporter'),
+  handlebars = require('handlebars'),
+  fs = require('fs'),
+  path = require('path'),
+  htmlTemplate = '../../templates/html/contact.html',
   mailList = [process.env.ALEXANDER_MAIL];
 
-exports.createContactEmail = (email) => {
+exports.createContactEmail = async (email) => {
   const filePath = path.join(__dirname, htmlTemplate),
-    source = fs.readFileSync(filePath, "utf-8").toString(),
+    source = fs.readFileSync(filePath, 'utf-8').toString(),
     template = handlebars.compile(source),
     replacements = email;
   contactEmailTemplate = template(replacements);
+
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   let contactEmail = {
     from: process.env.ALEXANDER_MAIL,
@@ -20,12 +22,9 @@ exports.createContactEmail = (email) => {
     html: contactEmailTemplate,
   };
 
-  transporter
-    .sendMail(contactEmail, (error, info) => {
-      if(error) {
-        throw new Error(error)
-      } else {
-        console.log({info})
-      }
-    });
+  await sgMail.send(contactEmail).then((response) => {
+    console.log(response[0].statusCode);
+    console.log(response[0].headers);
+    return response;
+  });
 };

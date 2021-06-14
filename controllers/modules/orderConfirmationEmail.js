@@ -12,6 +12,8 @@ exports.createOrderConfirmationEmail = async (order) => {
     replacements = order;
   confirmationEmailTemplate = template(replacements);
 
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
   let confirmationEmail = {
     from: process.env.ALEXANDER_MAIL,
     to: order.email,
@@ -19,12 +21,9 @@ exports.createOrderConfirmationEmail = async (order) => {
     html: confirmationEmailTemplate,
   };
 
-  await transporter.sendMail(confirmationEmail, (error, info) => {
-    if (error) {
-      throw new Error(error)
-    } else {
-      console.log(info)
-      return info
-    }
+  await sgMail.send(confirmationEmail).then((response) => {
+    console.log(response[0].statusCode);
+    console.log(response[0].headers);
+    return response;
   });
 };
