@@ -18,7 +18,7 @@ exports.createContactConfirmationEmail = async (email) => {
   let confirmationEmail = {
     from: process.env.ALEXANDER_MAIL,
     to: email.email,
-    subject: email.subject,
+    subject: 'Tack för ditt meddelande',
     html: confirmationEmailTemplate,
   };
 
