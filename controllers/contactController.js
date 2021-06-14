@@ -1,7 +1,7 @@
-const { createContactEmail } = require("./modules/contactEmail"),
+const { createContactEmail } = require('./modules/contactEmail'),
   {
     createContactConfirmationEmail,
-  } = require("./modules/contactConfirmationEmail");
+  } = require('./modules/contactConfirmationEmail');
 
 exports.contact = async (req, res) => {
   const email = req.body;
@@ -10,9 +10,16 @@ exports.contact = async (req, res) => {
     await createContactEmail(email);
     await createContactConfirmationEmail(email);
 
-    res.status(200).send({ message: "Ditt meddelande har skickats" });
+    res
+      .status(200)
+      .send({ success: true, message: 'Ditt meddelande har skickats' });
   } catch (err) {
     console.log(err);
-    res.send(err)
+    res.send({
+      success: false,
+      message:
+        'Tyvärr något gick fel, vänligen kontakta oss per telefon eller email',
+      error: err,
+    });
   }
 };

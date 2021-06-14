@@ -1,15 +1,14 @@
-const sgMail = require("@sendgrid/mail"),
-  { transporter } = require("./transporter"),
-  handlebars = require("handlebars"),
-  fs = require("fs"),
-  path = require("path"),
-  htmlTemplate = "../../templates/html/order.html",
+const sgMail = require('@sendgrid/mail'),
+  { transporter } = require('./transporter'),
+  handlebars = require('handlebars'),
+  fs = require('fs'),
+  path = require('path'),
+  htmlTemplate = '../../templates/html/order.html',
   mailList = [process.env.ALEXANDER_MAIL];
 
 exports.createOrderEmail = async (order) => {
-  console.log(order);
   const filePath = path.join(__dirname, htmlTemplate),
-    source = fs.readFileSync(filePath, "utf-8").toString(),
+    source = fs.readFileSync(filePath, 'utf-8').toString(),
     template = handlebars.compile(source),
     replacements = order;
   orderEmailTemplate = template(replacements);
@@ -23,13 +22,9 @@ exports.createOrderEmail = async (order) => {
     html: orderEmailTemplate,
   };
 
- await transporter.sendMail(orderEmail, function (error, info) {
-    if (error) {
-      console.log(error)
-      throw new Error(error)
-    } else {
-      console.log(info)
-      return info
-    }
+  await sgMail.send(orderEmail).then((response) => {
+    console.log(response[0].statusCode);
+    console.log(response[0].headers);
+    return response;
   });
 };

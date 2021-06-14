@@ -12,14 +12,16 @@ exports.order = async (req, res) => {
     await createOrderEmail(order);
     await createOrderConfirmationEmail(order);
 
-    res.status(200).send({ message: 'Din beställning har skickats' });
-  } catch (error) {
-    console.log(error);
-
-    res.status(500).send({
-      error:
+    res
+      .status(200)
+      .send({ success: true, message: 'Din beställning har skickats' });
+  } catch (err) {
+    console.log(err);
+    res.send({
+      success: false,
+      message:
         'Tyvärr något gick fel, vänligen kontakta oss per telefon eller email',
+      error: err,
     });
   }
-  
 };

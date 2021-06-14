@@ -20,12 +20,9 @@ exports.createOrderConfirmationEmail = async (order) => {
     html: confirmationEmailTemplate,
   };
 
-  await transporter.sendMail(confirmationEmail, (error, info) => {
-    if (error) {
-      throw new Error(error)
-    } else {
-      console.log(info)
-      return info
-    }
+  await sgMail.send(confirmationEmail).then((response) => {
+    console.log(response[0].statusCode);
+    console.log(response[0].headers);
+    return response;
   });
 };
