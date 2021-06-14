@@ -11,6 +11,7 @@ exports.createOrderConfirmationEmail = async (order) => {
     template = handlebars.compile(source),
     replacements = order;
   confirmationEmailTemplate = template(replacements);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   let confirmationEmail = {
     from: process.env.ALEXANDER_MAIL,

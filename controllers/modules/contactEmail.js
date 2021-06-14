@@ -12,6 +12,7 @@ exports.createContactEmail = (email) => {
     template = handlebars.compile(source),
     replacements = email;
   contactEmailTemplate = template(replacements);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   let contactEmail = {
     from: process.env.ALEXANDER_MAIL,
@@ -20,12 +21,7 @@ exports.createContactEmail = (email) => {
     html: contactEmailTemplate,
   };
 
-  transporter
-    .sendMail(contactEmail, (error, info) => {
-      if(error) {
-        throw new Error(error)
-      } else {
-        console.log({info})
-      }
-    });
+  return await sgMail
+  .send(contactEmail)
+  
 };

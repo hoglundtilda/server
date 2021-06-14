@@ -14,6 +14,8 @@ exports.createOrderEmail = async (order) => {
     replacements = order;
   orderEmailTemplate = template(replacements);
 
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
   let orderEmail = {
     from: process.env.ALEXANDER_MAIL,
     to: mailList,

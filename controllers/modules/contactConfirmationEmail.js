@@ -12,6 +12,7 @@ exports.createContactConfirmationEmail = async (email) => {
     template = handlebars.compile(source),
     replacements = email;
   confirmationEmailTemplate = template(replacements);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   let confirmationEmail = {
     from: process.env.ALEXANDER_MAIL,
@@ -20,14 +21,6 @@ exports.createContactConfirmationEmail = async (email) => {
     html: confirmationEmailTemplate,
   };
 
-  transporter
-    .sendMail(confirmationEmail, (error, info) => {
-      if(error) {
-        throw new Error(error)
-      } else {
-        console.log({info})
-      }
-      
-    
-    });
+  return await sgMail
+  .send(confirmationEmail)
 };
