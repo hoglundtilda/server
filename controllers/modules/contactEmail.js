@@ -12,6 +12,7 @@ exports.createContactEmail = async (email) => {
     template = handlebars.compile(source),
     replacements = email;
   contactEmailTemplate = template(replacements);
+
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   let contactEmail = {
@@ -21,5 +22,9 @@ exports.createContactEmail = async (email) => {
     html: contactEmailTemplate,
   };
 
-  return await sgMail.send(contactEmail);
+  await sgMail.send(contactEmail).then((response) => {
+    console.log(response[0].statusCode);
+    console.log(response[0].headers);
+    return response;
+  });
 };
