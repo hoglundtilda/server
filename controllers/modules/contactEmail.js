@@ -1,14 +1,14 @@
-const sgMail = require("@sendgrid/mail"),
-  { transporter } = require("./transporter"),
-  handlebars = require("handlebars"),
-  fs = require("fs"),
-  path = require("path"),
-  htmlTemplate = "../../templates/html/contact.html",
+const sgMail = require('@sendgrid/mail'),
+  { transporter } = require('./transporter'),
+  handlebars = require('handlebars'),
+  fs = require('fs'),
+  path = require('path'),
+  htmlTemplate = '../../templates/html/contact.html',
   mailList = [process.env.ALEXANDER_MAIL];
 
-exports.createContactEmail = (email) => {
+exports.createContactEmail = async (email) => {
   const filePath = path.join(__dirname, htmlTemplate),
-    source = fs.readFileSync(filePath, "utf-8").toString(),
+    source = fs.readFileSync(filePath, 'utf-8').toString(),
     template = handlebars.compile(source),
     replacements = email;
   contactEmailTemplate = template(replacements);
@@ -21,7 +21,5 @@ exports.createContactEmail = (email) => {
     html: contactEmailTemplate,
   };
 
-  return await sgMail
-  .send(contactEmail)
-  
+  return await sgMail.send(contactEmail);
 };
