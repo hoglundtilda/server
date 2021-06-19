@@ -12,7 +12,7 @@ exports.contact = async (req, res) => {
 
     res
       .status(200)
-      .send({ success: true, message: 'Ditt meddelande har skickats' });
+      .send({ success: true, message: 'Ditt meddelande har skickats', status: 200 });
   } catch (err) {
     console.log(err);
     res.send({
