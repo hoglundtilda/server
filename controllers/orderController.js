@@ -14,7 +14,7 @@ exports.order = async (req, res) => {
 
     res
       .status(200)
-      .send({ success: true, message: 'Din beställning har skickats' });
+      .send({ success: true, message: 'Din beställning har skickats', status: 200 });
   } catch (err) {
     console.log(err);
     res.send({
