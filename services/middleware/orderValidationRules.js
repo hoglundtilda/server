@@ -3,8 +3,8 @@ const { body } = require("express-validator")
 exports.orderValidationRules = () => {
     
     return [
-      // body('firstName').matches(/^[a-zA-ZåäöÅÄÖ]+$/),
-      // body('lastName').matches(/^[a-zA-ZåäöÅÄÖ]+$/),
+      body('firstName').matches(/^[a-zA-ZåäöÅÄÖ]+$/),
+      body('lastName').matches(/^[a-zA-ZåäöÅÄÖ]+$/),
       body('street').isLength({ min: 5 }),
       body('postNr').matches(/^(s-|S-){0,1}[0-9]{3}\s?[0-9]{2}$/),
       body('state').isLength({ min: 2 }),
