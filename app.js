@@ -5,8 +5,8 @@ const express = require('express'),
   app = express(),
   PORT = process.env.APP_PORT || 5050,
   CLIENT = process.env,
+ // TEST = 'http://localhost:xxx/'
   corsOptions = {
-    //origin: 'https://www.test.laddboxkillarna.se',
     origin: CLIENT,
     optionsSuccessStatus: 200,
   };
